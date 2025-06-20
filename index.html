@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to BaguntayiKonandi.com</title>
+    <style>
+        body {
+            background: #f5f6fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2.5rem 3rem;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            min-width: 340px;
+        }
+
+        h1 {
+            color: #273c75;
+            margin-bottom: 1rem;
+        }
+
+        .tab-btns {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            background: #4078c0;
+            color: #fff;
+            border: none;
+            border-radius: 6px 6px 0 0;
+            padding: 0.7rem 2rem;
+            font-size: 1.1rem;
+            margin: 0 2px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: #273c75;
+        }
+
+        .form-section {
+            display: none;
+            text-align: left;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #353b48;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #dcdde1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.2s;
+        }
+
+        input:focus {
+            border-color: #4078c0;
+            outline: none;
+        }
+
+        .error {
+            color: #e84118;
+            font-size: 0.92rem;
+            margin-top: 0.2rem;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.7rem;
+            background: #4078c0;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            background: #273c75;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to BaguntayiKonandi.com</h1>
+        <div class="tab-btns">
+            <button class="tab-btn active" id="registerTabBtn" onclick="showTab('register')">Register</button>
+            <button class="tab-btn" id="loginTabBtn" onclick="showTab('login')">Login</button>
+        </div>
+        <!-- Register Form -->
+        <div class="form-section active" id="registerSection">
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <input type="text" id="regUsername" autocomplete="off">
+                    <div class="error" id="regUsernameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="regMobile">Mobile</label>
+                    <input type="text" id="regMobile" autocomplete="off">
+                    <div class="error" id="regMobileError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword">
+                    <div class="error" id="regPasswordError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword">
+                    <div class="error" id="regConfirmPasswordError"></div>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        <!-- Login Form -->
+        <div class="form-section" id="loginSection">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" autocomplete="off">
+                    <div class="error" id="loginUsernameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword">
+                    <div class="error" id="loginPasswordError"></div>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Tab switching logic
+        function showTab(tab) {
+            document.getElementById('registerTabBtn').classList.remove('active');
+            document.getElementById('loginTabBtn').classList.remove('active');
+            document.getElementById('registerSection').classList.remove('active');
+            document.getElementById('loginSection').classList.remove('active');
+            if (tab === 'register') {
+                document.getElementById('registerTabBtn').classList.add('active');
+                document.getElementById('registerSection').classList.add('active');
+            } else {
+                document.getElementById('loginTabBtn').classList.add('active');
+                document.getElementById('loginSection').classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>

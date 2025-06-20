@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            background: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .register-container {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            width: 350px;
+        }
+
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #273c75;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #353b48;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #dcdde1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.2s;
+        }
+
+        input:focus {
+            border-color: #4078c0;
+            outline: none;
+        }
+
+        .error {
+            color: #e84118;
+            font-size: 0.92rem;
+            margin-top: 0.2rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.7rem;
+            background: #4078c0;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #273c75;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-container">
+        <h2>Create Account</h2>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username" autocomplete="off">
+            <div class="error" id="usernameError"></div>
+        </div>
+        <div class="form-group">
+            <label for="mob">Mobile</label>
+            <input type="text" id="mob" placeholder="Enter your mobile number" autocomplete="off">
+            <div class="error" id="mobError"></div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password">
+            <div class="error" id="passwordError"></div>
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" placeholder="Confirm password">
+            <div class="error" id="confirmPasswordError"></div>
+        </div>
+        <button onclick="handleRegister()">Register</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Real-time validation
+        document.getElementById('username').addEventListener('input', function () {
+            document.getElementById('usernameError').textContent = this.value.trim() === '' ? 'Username is required.' : '';
+        });
+        document.getElementById('mob').addEventListener('input', function () {
+            const mobVal = this.value.trim();
+            if (mobVal === '') {
+                document.getElementById('mobError').textContent = 'Mobile number is required.';
+            } else if (!/^\d{10}$/.test(mobVal)) {
+                document.getElementById('mobError').textContent = 'Enter a valid 10-digit mobile number.';
+            } else {
+                document.getElementById('mobError').textContent = '';
+            }
+        });
+        document.getElementById('password').addEventListener('input', function () {
+            document.getElementById('passwordError').textContent = this.value.length < 6 ? 'Password must be at least 6 characters.' : '';
+        });
+        document.getElementById('confirm_password').addEventListener('input', function () {
+            const pass = document.getElementById('password').value;
+            document.getElementById('confirmPasswordError').textContent = this.value !== pass ? 'Passwords do not match.' : '';
+        });
+    </script>
+</body>
+
+</html>
