@@ -93,7 +93,7 @@ if (loginForm) {
         let user_found = reg_user_list.find(v => v.name === user_name && v.password === user_password);
         if (user_found) {
             localStorage.setItem('loggedInUser', user_name);
-            showAlert('Login successful!', false, 'products/index.html');
+            showAlert('Login successful!', false, 'products.html');
         } else {
             document.getElementById('loginPasswordError').textContent = 'Invalid username or password.';
         }
